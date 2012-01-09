@@ -33,7 +33,7 @@ public class NavigationNode
     }
     public static NavigationNode PopulateFromFilePath(string path, string omitFileNamesCommaSeparated)
     {
-        omitFileNames = omitFileNamesCommaSeparated.Split(',');
+        omitFolderNames = omitFileNamesCommaSeparated.Split(',');
         var nodeTree = new NavigationNode(null);
         nodeTree.PopulateFileTree(path);
         return nodeTree;
