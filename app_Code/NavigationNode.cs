@@ -9,7 +9,8 @@ using System.Linq;
 /// </summary>
 public class NavigationNode
 {
- public int Id { get; set; }
+    public List<string> OmitFolderNames() { get; set; }
+    public int Id { get; set; }
     public bool VisibleInNavigation {get; set; }
     public string Name { get; set; }    
     public string Title { get; set; }
@@ -90,7 +91,8 @@ public class NavigationNode
 
         foreach (var subdirectory in directory.GetDirectories())
         {
-
+            if (!OmitFoldersNames.Contains(subdirectory.Name))
+            {
             var directoryNode = new NavigationNode(){
                  Name = subdirectory.Name,
                  VisibleInNavigation = subdirectory.Name.Substring(0, 1) == subdirectory.Name.Substring(0, 1).ToUpper(),
@@ -100,6 +102,7 @@ public class NavigationNode
             };
             PopulateFileTree(subdirectory.FullName, directoryNode);
             node.Children.Add(directoryNode);
+            }
         }
 
         foreach (var file in directory.GetFiles())
