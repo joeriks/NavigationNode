@@ -1,0 +1,25 @@
+﻿@helper RecursiveTree(NavigationNode node)
+    {
+        if (node!=null && node.VisibleChildren()!=null)
+        {
+    <ul>
+        @foreach (var child in node.VisibleChildren())
+        {
+            <li><a href="@child.Path">
+                @child.Name
+            </a>
+                @RecursiveTree(child)
+            </li>
+        }
+    </ul>
+        }
+}
+@{
+    var currentNode = ((NavigationNode)App.Navigation).FindNodeByPath(Request.Path);
+}
+@if (currentNode != null)
+{
+    <a href="@currentNode.Path">@currentNode.Name</a><br />
+    
+    @RecursiveTree(currentNode.AncestorAtLevel(1))
+}

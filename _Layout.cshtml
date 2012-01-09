@@ -1,0 +1,13 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>@Page.Title</title>
+        @RenderSection("head", required: false)
+    </head>
+    <body>
+        @RenderPage("/Shared/_TopNavigation.cshtml")
+        <hr />
+        @RenderPage("/Shared/_SubNavigation.cshtml")
+        @RenderBody()
+    </body>
+</html>
