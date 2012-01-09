@@ -1,4 +1,4 @@
-A file-only concept/sandbox CMS using Razor syntax and some simple conventions
+A file-only concept/sandbox super simple "CMS" using Razor syntax and some simple conventions
 ---
 
 Use all Razor techniques for easy layouts, sections, partial page contents, helpers a.s.o
