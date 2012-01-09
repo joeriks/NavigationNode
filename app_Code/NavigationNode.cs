@@ -9,7 +9,7 @@ using System.Linq;
 /// </summary>
 public class NavigationNode
 {
-    private string[] omitFolderNames;
+    public List<string> OmitFolderNames {get; set;}
     public int Id { get; set; }
     public bool VisibleInNavigation {get; set; }
     public string Name { get; set; }    
@@ -26,6 +26,7 @@ public class NavigationNode
     {
         Parent = parent;
         Children = new List<NavigationNode>();
+        OmitFolderNames = new List<string>();
     }
     public NavigationNode Root()
     {
@@ -33,8 +34,8 @@ public class NavigationNode
     }
     public static NavigationNode PopulateFromFilePath(string path, string omitFileNamesCommaSeparated)
     {
-        omitFolderNames = omitFileNamesCommaSeparated.Split(',');
         var nodeTree = new NavigationNode(null);
+        nodeTree.OmitFolderNames = new List<string>(omitFileNamesCommaSeparated.Split(','));
         nodeTree.PopulateFileTree(path);
         return nodeTree;
     }
@@ -92,7 +93,7 @@ public class NavigationNode
 
         foreach (var subdirectory in directory.GetDirectories())
         {
-            if (!OmitFoldersNames.Contains(subdirectory.Name))
+            if (!node.OmitFolderNames.Contains(subdirectory.Name))
             {
             var directoryNode = new NavigationNode(){
                  Name = subdirectory.Name,
