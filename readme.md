@@ -3,6 +3,13 @@ This is a file-only CMS *)
 
 Using Razor for easy layouts, sections, partial page contents and helpers
 Traversing the file system on App Start to create navigation tree
+
+@{
+    var omitFolderNames = "App_Code,Bin,App_Data";
+    App.Navigation = NavigationNode.PopulateFromFilePath(HttpContext.Current.Server.MapPath("/"),omitFolderNames);
+    
+}
+
 Conventions:
 .cshtml files with capital first letter will show in navigation
 folders with capital first letter will show in navigation
