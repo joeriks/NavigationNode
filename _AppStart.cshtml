@@ -1,5 +1,5 @@
 ﻿@{
-    var omitFolderNames = "App_Code, Bin, App_Data";
+    var omitFolderNames = "App_Code,Bin,App_Data";
     App.Navigation = NavigationNode.PopulateFromFilePath(HttpContext.Current.Server.MapPath("/"),omitFolderNames);
     
 }
