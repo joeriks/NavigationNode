@@ -1,20 +1,12 @@
-This is a file-only CMS *)
+A file-only concept/sandbox CMS using Razor syntax and some simple conventions
 ---
 
-Using Razor for easy layouts, sections, partial page contents and helpers
-Traversing the file system on App Start to create navigation tree
+Use all Razor techniques for easy layouts, sections, partial page contents, helpers a.s.o
+The only thing this "CMS" adds is a small NavigationNode class which can build a navigation node tree from the filesystem. Then you can use the navigation node tree to display html navigation with some simple Razor functions (sample top navigation and sub navigation included)
 
-@{
-    var omitFolderNames = "App_Code,Bin,App_Data";
-    App.Navigation = NavigationNode.PopulateFromFilePath(HttpContext.Current.Server.MapPath("/"),omitFolderNames);
-    
-}
+Folders and files with .cshtml extenstions will show in the navigation (sets the VisibleInNavigation property to true).
 
-Conventions:
-.cshtml files with capital first letter will show in navigation
-folders with capital first letter will show in navigation
+
 This sample runs from github (free account) https://github.com/joeriks/NavigationNode and autodeploy to AppHarbor (free account 1 instance) http://navigationnode.apphb.com/
 
 Which basically means I can edit the razor files on GitHub, and on save they are committed and automatically deployed to the site, which is pretty cool.
-
-*) Just an experiment really, hold your horses... :-p
