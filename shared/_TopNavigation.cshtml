@@ -1,4 +1,6 @@
-﻿<ul>@foreach (var node in App.Navigation.Root().VisibleChildren())
+﻿<ul>
+<li><a href="/">Home</a></li>
+@foreach (var node in App.Navigation.Root().VisibleChildren())
 {
     <li><a href="@node.Path">@node.Name</a></li>
 }
