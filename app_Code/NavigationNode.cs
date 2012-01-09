@@ -9,7 +9,7 @@ using System.Linq;
 /// </summary>
 public class NavigationNode
 {
-    public List<string> OmitFolderNames() { get; set; }
+    private string[] omitFolderNames;
     public int Id { get; set; }
     public bool VisibleInNavigation {get; set; }
     public string Name { get; set; }    
@@ -31,8 +31,9 @@ public class NavigationNode
     {
         return AncestorAtLevel(0);
     }
-    public static NavigationNode PopulateFromFilePath(string path)
+    public static NavigationNode PopulateFromFilePath(string path, string omitFileNamesCommaSeparated)
     {
+        omitFileNames = omitFileNamesCommaSeparated.Split(',');
         var nodeTree = new NavigationNode(null);
         nodeTree.PopulateFileTree(path);
         return nodeTree;
